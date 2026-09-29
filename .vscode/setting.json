@@ -8,5 +8,9 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.fontFamily": "'Fira Code', Consolas, monospace",
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+    "tailwindCSS.experimental.configFile": "app/globals.css"
 }
