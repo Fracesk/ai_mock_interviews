@@ -56,12 +56,12 @@ function getAdminApp() {
 }
 
 // 3. 核心关键：导出 Getter 函数（按需延迟调用），绝对不要在顶层直接执行！
-export const getAdminAuth = () => {
+export const auth = () => {
   getAdminApp();
   return getAuth();
 };
 
-export const getAdminDb = () => {
+export const db = () => {
   getAdminApp();
   return getFirestore();
 };
