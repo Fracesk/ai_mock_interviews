@@ -1,10 +1,7 @@
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 import { getApps, initializeApp, cert } from "firebase-admin/app";
-import https from "node:https";
-import dns from "node:dns"
 
-dns.setDefaultResultOrder('ipv4first');
 
 
 const initFirebaseAdmin = () => {
