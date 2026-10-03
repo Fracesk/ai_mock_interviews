@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+# 上面那条锚在根目录，匹配不到 bot/ 自己的依赖；漏了这行会把 500MB 依赖提交进仓库
+/bot/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -39,3 +41,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 本地语音会话记录（含真实对话内容，只用于排查，不进仓库）
+# lk 会把 agent 配置同时写到 cwd，bot/livekit.toml 才是要留的那份
+/livekit.toml
+
+/docs/conversations/

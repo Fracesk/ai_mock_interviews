@@ -15,9 +15,6 @@ const nextConfig: NextConfig = {
     typescript: {
         ignoreBuildErrors: true,
     },
-    eslint: {
-        ignoreDuringBuilds: true,
-    },
     serverExternalPackages: ["firebase-admin", "jwks-rsa", "jose"],
 } as any;
 

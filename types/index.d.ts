@@ -23,6 +23,8 @@ interface Interview {
     userId: string;
     type: string;
     finalized: boolean;
+    /** 封面在创建时就定好了。老数据可能没有，界面按 id 现算一张稳定的兜底 */
+    coverImage?: string;
 }
 
 interface CreateFeedbackParams {
@@ -45,6 +47,7 @@ interface InterviewCardProps {
     type: string;
     techstack: string[];
     createdAt?: string;
+    coverImage?: string;
 }
 
 interface AgentProps {
