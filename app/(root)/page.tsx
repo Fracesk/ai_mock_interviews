@@ -13,10 +13,17 @@ import {
 async function Home() {
   const user = await getCurrentUser();
 
-  const [userInterviews, allInterview] = await Promise.all([
-    getInterviewsByUserId(user?.id!),
-    getLatestInterviews({ userId: user?.id! }),
-  ]);
+  /*
+   * layout 里的重定向挡不住这里：Next 的 layout 与 page 是并发渲染的，
+   * 这一页会先跑起来。少了这个判断，未登录时下面那个 undefined 会直接
+   * 进 Firestore 查询并抛错（2026-10-03 线上 500 的根因）。
+   */
+  const [userInterviews, allInterview] = user
+    ? await Promise.all([
+        getInterviewsByUserId(user.id),
+        getLatestInterviews({ userId: user.id }),
+      ])
+    : [null, null];
 
   const hasPastInterviews = userInterviews?.length! > 0;
   const hasUpcomingInterviews = allInterview?.length! > 0;

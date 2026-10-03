@@ -83,7 +83,6 @@ export async function getCurrentUser(): Promise<User | null> {
     const cookieStore = await cookies();
 
     const sessionCookie = cookieStore.get("session")?.value;
-    console.log("isAuthenticated user:", cookieStore , sessionCookie);
     if (!sessionCookie) return null;
 
     try {

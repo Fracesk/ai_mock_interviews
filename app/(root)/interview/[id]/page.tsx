@@ -19,10 +19,10 @@ const InterviewDetails = async ({ params }: RouteParams) => {
   const interview = await getInterviewById(id);
   if (!interview) redirect("/");
 
-  const feedback = await getFeedbackByInterviewId({
-    interviewId: id,
-    userId: user?.id!,
-  });
+  // 同 (root)/page.tsx：并发渲染下这一页也会在重定向生效前先跑，必须自己挡。
+  const feedback = user
+    ? await getFeedbackByInterviewId({ interviewId: id, userId: user.id })
+    : null;
 
   return (
     <>
